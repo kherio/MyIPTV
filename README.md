@@ -23,10 +23,15 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ahXN00/OwnTV/actions/workflows/android.yml">
-    <img alt="Android CI" src="https://github.com/ahXN00/OwnTV/actions/workflows/android.yml/badge.svg">
+  <a href="https://github.com/kherio/MyIPTV/actions/workflows/android.yml">
+    <img alt="Android CI" src="https://github.com/kherio/MyIPTV/actions/workflows/android.yml/badge.svg">
   </a>
 </p>
+
+> **MyIPTV is a fork of [OwnTV](https://github.com/ahXN00/OwnTV)** by ahXN00, released under the same
+> GPLv3 licence. It is an independent build with its own releases and update channel; the original
+> project and its authors are not responsible for it. Core engine:
+> [OwnTV_Core](https://github.com/ahXN00/OwnTV_Core).
 
 ---
 OwnTV is a native **Android TV** IPTV **player**, built with Kotlin and Jetpack Compose for TV. It

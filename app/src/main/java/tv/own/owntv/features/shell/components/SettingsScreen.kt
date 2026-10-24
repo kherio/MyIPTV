@@ -2076,7 +2076,7 @@ private fun CatchupSourceValueHost(settingsVm: SettingsViewModel, src: tv.own.ow
 }
 
 /** The repository line More › About shows. */
-internal const val GITHUB_REPO = "github.com/ahXN00/OwnTV"
+internal const val GITHUB_REPO = "github.com/kherio/MyIPTV"
 internal const val TELEGRAM_LINK = "t.me/owntvplayer"
 
 /**

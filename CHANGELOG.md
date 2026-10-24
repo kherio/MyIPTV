@@ -7,6 +7,11 @@
 > Issue numbers that are part of a title are fine; explanatory parentheticals are not. The detail —
 > what, why, files and verification — belongs in the commit message, never here.
 
+## v1.0.0 — 2026-10-24
+
+### ✨ New features
+- **🍴 First MyIPTV build: a fork of OwnTV 5.2.1 with its own update channel**
+
 ## v5.2.1 — 2026-10-21
 
 ### ✨ New features
