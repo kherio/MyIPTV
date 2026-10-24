@@ -12,7 +12,16 @@ on:
     tags: [ "v*" ]
   pull_request:
     branches: [ main ]
+  # Actions > Android CI > Run workflow. With a version filled in (e.g. 1.0.1) it builds and publishes
+  # the release v<version> from the chosen branch, creating the tag itself; without one it is a dev
+  # build only. The version needs a "## v<version>" section in CHANGELOG.md for its release notes.
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version as x.y.z, e.g. 1.0.1 (leave empty for a dev build, no release)"
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: write   # required so tag builds can create a Release
@@ -24,7 +33,8 @@ permissions:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # A manual run may be a release; a later push to main must not cancel it half-built.
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
 
 jobs:
   # A "Pin core x.y.z" pull request opened by core's bump-consumers workflow changes exactly two
@@ -138,7 +148,10 @@ jobs:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     env:
-      IS_TAG: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      # A release is cut from a pushed v* tag, or from a manual run that names a version.
+      IS_TAG: ${{ startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.version != '') }}
+      # The release tag: the pushed tag itself, or v<version> for a manual run.
+      RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('v{0}', inputs.version) }}
       # Set at runtime via $GITHUB_ENV in the "Name the APK" step. Declared here (empty) so static
       # linters don't flag the later ${{ env.APK_OUT }} references as "context access might be invalid".
       APK_OUT: ""
@@ -166,7 +179,10 @@ jobs:
         id: ver
         run: |
           if [ "$IS_TAG" = "true" ]; then
-            NAME="${GITHUB_REF_NAME#v}"                 # tag v1.2.0 -> 1.2.0
+            case "${RELEASE_TAG#v}" in
+              *[!0-9.]*|""|.*|*.|*..*) echo "::error::Version '${RELEASE_TAG#v}' must look like 1.2.3"; exit 1 ;;
+            esac
+            NAME="${RELEASE_TAG#v}"                     # tag v1.2.0 -> 1.2.0
             IFS='.' read -r MA MI PA <<< "$NAME"
             CODE=$(( ${MA:-0} * 10000 + ${MI:-0} * 100 + ${PA:-0} ))   # 1.2.0 -> 10200
             [ "$CODE" -gt 0 ] || CODE=1
@@ -290,7 +306,7 @@ jobs:
       - name: Extract release notes from CHANGELOG.md
         if: env.IS_TAG == 'true'
         env:
-          TAG: ${{ github.ref_name }}
+          TAG: ${{ env.RELEASE_TAG }}
         run: |
           # The release body is what the in-app updater shows as "What's new", so it must be the
           # SHORT, bullet-only notes from CHANGELOG.md (the only changelog; detail lives in commits).
@@ -325,7 +341,10 @@ jobs:
         if: env.IS_TAG == 'true'
         uses: softprops/action-gh-release@v3
         with:
-          name: OwnTV ${{ github.ref_name }}
+          name: MyIPTV ${{ env.RELEASE_TAG }}
+          # A pushed tag already exists; a manual run has none, so the action creates it on this commit.
+          tag_name: ${{ env.RELEASE_TAG }}
+          target_commitish: ${{ github.sha }}
           files: |
             dist/${{ env.APK_OUT }}
             dist/OwnTV.apk
