@@ -1,9 +1,4 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="extras/brand/app-logos/logo_eggshell_light.png">
-    <img src="extras/brand/app-logos/logo_eggshell.png" alt="OwnTV" width="360">
-  </picture>
-</p>
+<h1 align="center">MyIPTV</h1>
 
 <p align="center">
   <b>Your own IPTV player for Android TV</b><br>
@@ -17,9 +12,6 @@
   <img alt="Player" src="https://img.shields.io/badge/engines-libmpv%20%2B%20ExoPlayer-FB8C00">
   <img alt="License" src="https://img.shields.io/badge/license-GPLv3-blue">
   <img alt="Built with the help of AI" src="https://img.shields.io/badge/built%20with-the%20help%20of%20AI-8A2BE2">
-  <a href="https://hosted.weblate.org/engage/owntv/">
-    <img alt="Translation status" src="https://hosted.weblate.org/widget/owntv/svg-badge.svg">
-  </a>
 </p>
 
 <p align="center">
@@ -28,35 +20,33 @@
   </a>
 </p>
 
-> **MyIPTV is a fork of [OwnTV](https://github.com/ahXN00/OwnTV)** by ahXN00, released under the same
-> GPLv3 licence. It is an independent build with its own releases and update channel; the original
-> project and its authors are not responsible for it. Core engine:
+> **MyIPTV is a fork of [OwnTV](https://github.com/ahXN00/OwnTV)** by ahXN00 (based on OwnTV 5.2.1),
+> released under the same GPLv3 licence. It is an independent build with its own releases and update
+> channel; the original project and its authors are not responsible for it. Core engine:
 > [OwnTV_Core](https://github.com/ahXN00/OwnTV_Core).
 
 ---
-OwnTV is a native **Android TV** IPTV **player**, built with Kotlin and Jetpack Compose for TV. It
+MyIPTV is a native **Android TV** IPTV **player**, built with Kotlin and Jetpack Compose for TV. It
 runs **two playback engines** — libmpv (FFmpeg) for the widest compatibility, ExoPlayer (Media3) for
 near-instant Live TV — and it is a *player only*: you bring your own **Xtream** login, **M3U**
 playlist (URL or a local file) or **Stalker/Ministra** portal.
 
-> ⚠️ OwnTV ships **no** channels, playlists, subscriptions or streams. You are responsible for the
+> ⚠️ MyIPTV ships **no** channels, playlists, subscriptions or streams. You are responsible for the
 > sources you add.
 
-Open source, GPLv3, original code, built with the help of AI. **Android TV only** — leanback
-launcher, D-pad first.
+Open source, GPLv3, built with the help of AI. **Android TV only** — leanback launcher, D-pad first.
 
 > ### 📖 New here? **[User Guide →](extras/USER_GUIDE.md)**
 > Every feature, where to find it, and the remote shortcuts — on one page.
 
 ---
 
-## 💬 Community
+## 💬 Support
 
-Questions, ideas, bug reports — **join the OwnTV Telegram group:**
+Questions, ideas, bug reports — [open an issue](https://github.com/kherio/MyIPTV/issues).
 
-### 👉 [t.me/owntvplayer](https://t.me/owntvplayer)
-
-<a href="https://t.me/owntvplayer"><img src="extras/qr-codes/telegram_qr_code.jpg" alt="Scan to join the OwnTV Telegram group" width="150"></a>
+MyIPTV shares its engine with the original project, so problems that come from the engine itself may
+also be known upstream, in the [OwnTV community](https://t.me/owntvplayer).
 
 ---
 
@@ -90,7 +80,7 @@ Questions, ideas, bug reports — **join the OwnTV Telegram group:**
 ### ⏺️ Recording & Multiview
 - Record live TV from the guide, the channel list or while watching — including every showing of a programme
 - **Multiview** — up to four channels at once, with one carrying the sound
-- OwnTV measures how many streams your provider allows and warns before it refuses one
+- MyIPTV measures how many streams your provider allows and warns before it refuses one
 
 ### 👥 Profiles & Downloads
 - Multiple profiles with their own favourites, history and resume points, PIN locks and a Kids mode
@@ -105,7 +95,7 @@ Questions, ideas, bug reports — **join the OwnTV Telegram group:**
 - **Remote Shortcuts** — map spare colour, number, channel and media keys to 26 actions
 - **26 interface languages**, RTL-aware, chosen before anything else on a fresh install
 - **Backup & Restore** to a single `.own` file, optionally encrypted, locally or over Wi-Fi
-- **Set up from another device** — a new box copies everything from the OwnTV device you already
+- **Set up from another device** — a new box copies everything from the MyIPTV device you already
   have over your own Wi-Fi, offered on the first setup screen rather than buried in the menus
 - In-app updates; memory-safe lists, auto-reconnect and offline detection throughout
 
@@ -161,11 +151,11 @@ More in **[extras/screenshots/](extras/screenshots/)**.
 
 This repository is the **Android TV app**. Everything underneath it — database, sync, parsers, EPG,
 backup, settings storage, the playback engines and every translated string — is a separate core
-library, shared with the [**OwnTV Mobile**](https://github.com/ahXN00/OwnTV_Mobile) app for phones
-and tablets.
+library, shared with the original project's [**OwnTV Mobile**](https://github.com/ahXN00/OwnTV_Mobile)
+app for phones and tablets.
 
 ```
-OwnTV/  (this repo)
+MyIPTV/  (this repo, a fork of OwnTV)
 tv.own.owntv/
 ├── player/      the TV player HUD, surfaces and mini-player
 ├── ui/          theme + reusable components
@@ -179,8 +169,9 @@ OwnTV_Core/  (separate repo, published as tv.own.owntv:core / :player-core)
 OwnTV_Mobile/  (separate repo, the phone and tablet app on the same core)
 ```
 
-**Related repositories**
+**Related repositories (upstream, by ahXN00)**
 
+- 📺 **[OwnTV](https://github.com/ahXN00/OwnTV)** — the original Android TV app this one is forked from.
 - 📱 **[OwnTV Mobile](https://github.com/ahXN00/OwnTV_Mobile)** — the phone and tablet app, built on
   the same core.
 - 🧩 **[OwnTV Core](https://github.com/ahXN00/OwnTV_Core)** — the shared engine both apps run on.
@@ -193,21 +184,25 @@ OwnTV_Mobile/  (separate repo, the phone and tablet app on the same core)
 
 ## 📥 Installing (Fire TV / Android TV)
 
-Grab the signed APK from the [**latest release**](https://github.com/ahXN00/OwnTV/releases/latest).
+Grab the APK from the [**latest release**](https://github.com/kherio/MyIPTV/releases/latest).
 This link always points at the newest build:
 
 ```
-https://github.com/ahXN00/OwnTV/releases/latest/download/OwnTV.apk
+https://github.com/kherio/MyIPTV/releases/latest/download/OwnTV.apk
 ```
 
-- **Fire TV** — install **Downloader** (by AFTVnews), then enter code **`4308278`**. Enable *Apps from
-  Unknown Sources* if prompted.
-- **Android TV / Google TV** — Downloader is on Google Play too, so the same code works. Or sideload
+- **Fire TV** — install **Downloader** (by AFTVnews), open it and type the link above as the URL.
+  Enable *Apps from Unknown Sources* if prompted.
+- **Android TV / Google TV** — Downloader is on Google Play too, so the same link works. Or sideload
   with *Send files to TV*, a USB drive, or `adb install OwnTV.apk`.
 
-> Install only from this repository's Releases. Each release ships **two APKs**:
-> `OwnTV.apk` (arm — every real TV box, and what the Downloader code fetches) and
-> `OwnTV-x86_64-vX.X.X.apk` (emulators and rare Intel boxes).
+> Install only from this repository's Releases. Each release ships `OwnTV.apk` (arm — every real TV
+> box) and the same build with its version in the name, `OwnTV-vX.X.X.apk`. The file is still called
+> `OwnTV.apk` for now. Builds signed with a release key also add `OwnTV-x86_64-vX.X.X.apk`
+> (emulators and rare Intel boxes). Until a release key is set up, builds are debug-signed: to update,
+> uninstall the previous version first.
+>
+> The Downloader code in the original OwnTV README (`4308278`) installs the **original** app, not this one.
 
 ## 🛠️ Building & running
 
@@ -215,9 +210,10 @@ https://github.com/ahXN00/OwnTV/releases/latest/download/OwnTV.apk
 > **[install the APK](#-installing-fire-tv--android-tv)**.
 
 Half the app lives in the separate [OwnTV_Core](https://github.com/ahXN00/OwnTV_Core) repository;
-Gradle downloads it from OwnTV's public Maven repository by itself — **no account or token needed**.
+Gradle downloads it from the original project's public Maven repository by itself — **no account or
+token needed**.
 
-1. **Get the code** — `git clone https://github.com/ahXN00/OwnTV.git` (or download the ZIP).
+1. **Get the code** — `git clone https://github.com/kherio/MyIPTV.git` (or download the ZIP).
 2. **Open it** in [Android Studio](https://developer.android.com/studio) and let Gradle sync.
 3. **Pick the build variant** — `standard` for real devices and arm emulators, `x86_64` for x86_64
    emulators. This matters: the native player only loads on a matching ABI.
@@ -234,16 +230,19 @@ Contributions, bug reports and ideas are welcome — open an issue or a pull req
 project's player-only, bring-your-own-source positioning and match the existing code style.
 
 <!-- i18n-contribution:start -->
-## Help translate OwnTV
+## Help translate
 
-If your language is already available, contribute interface translations across OwnTV's six Android resource components on [Hosted Weblate](https://hosted.weblate.org/projects/owntv/). If it is not listed, [open a language request ticket](https://github.com/ahXN00/OwnTV/issues/new?template=feature_request.yml&title=%5BLanguage%5D%20Add%20) first. A maintainer will review the request, register the locale, and prepare its base translation files on Hosted Weblate. Once the language appears on Hosted Weblate, you can start translating it there. The strings themselves live in [OwnTV's core library repository](https://github.com/ahXN00/OwnTV_Core), together with the language contributor guide covering identifiers, validation, and promotion policy.
+MyIPTV uses the interface translations of the original OwnTV project, which are managed upstream. If your language is already available, contribute translations on the original project's [Hosted Weblate](https://hosted.weblate.org/projects/owntv/). If it is not listed, [open a language request ticket](https://github.com/ahXN00/OwnTV/issues/new?template=feature_request.yml&title=%5BLanguage%5D%20Add%20) on the original repository first. The strings themselves live in [OwnTV's core library repository](https://github.com/ahXN00/OwnTV_Core), together with the language contributor guide covering identifiers, validation, and promotion policy.
 <!-- i18n-contribution:end -->
 
 ## 🙏 Credits
 
+MyIPTV is built on **[OwnTV](https://github.com/ahXN00/OwnTV)** and **[OwnTV Core](https://github.com/ahXN00/OwnTV_Core)**
+by ahXN00 and its contributors — thank you for releasing them as open source.
+
 <img src="extras/partner-logos/Weblate_logo.svg" alt="Weblate" width="200">
 
-OwnTV speaks 26 languages because people translate it on
+MyIPTV speaks 26 languages because people translate the original OwnTV project on
 [**Weblate**](https://weblate.org/), which hosts the project free of charge for libre software.
 Thank you to Weblate and to every translator who has given the app their language.
 
@@ -260,8 +259,8 @@ in with your own OpenSubtitles account and are subject to their terms and downlo
 
 ### 🎨 Brand
 
-The lowercase **owntv** wordmark was designed for OwnTV by [@m3th0d93](https://github.com/m3th0d93)
-in [issue #227](https://github.com/ahXN00/OwnTV/issues/227).
+The lowercase **owntv** wordmark belongs to the original OwnTV project: it was designed for OwnTV by
+[@m3th0d93](https://github.com/m3th0d93) in [issue #227](https://github.com/ahXN00/OwnTV/issues/227).
 
 ### ▶️ Playback engines
 
@@ -285,7 +284,7 @@ Thank you to all their maintainers. See each project for its own license.
 
 ## ⚖️ Legal
 
-OwnTV is a media **player** only. It ships with no channels, playlists, subscriptions, or content, and
+MyIPTV is a media **player** only. It ships with no channels, playlists, subscriptions, or content, and
 does not endorse or facilitate access to unauthorized streams. Users are solely responsible for the
 sources they add and for complying with the laws and rights that apply to them.
 
@@ -293,10 +292,10 @@ sources they add and for complying with the laws and rights that apply to them.
 
 Released under the **GNU General Public License v3.0 (GPLv3)** — see [LICENSE](LICENSE).
 
-In short: you're free to use, study, modify, and redistribute OwnTV, including commercially — but any
+In short: you're free to use, study, modify, and redistribute MyIPTV, including commercially — but any
 redistributed version (including forks and commercial products built on it) must also be licensed under
 GPLv3 and its source made available.
 
 ---
 
-<sub>OwnTV is an open-source, player-only project, built with the help of AI.</sub>
+<sub>MyIPTV is an open-source, player-only project, a fork of OwnTV, built with the help of AI.</sub>
