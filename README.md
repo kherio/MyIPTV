@@ -188,18 +188,18 @@ Grab the APK from the [**latest release**](https://github.com/kherio/MyIPTV/rele
 This link always points at the newest build:
 
 ```
-https://github.com/kherio/MyIPTV/releases/latest/download/OwnTV.apk
+https://github.com/kherio/MyIPTV/releases/latest/download/MyIPTV.apk
 ```
 
 - **Fire TV** — install **Downloader** (by AFTVnews), open it and type the link above as the URL.
   Enable *Apps from Unknown Sources* if prompted.
 - **Android TV / Google TV** — Downloader is on Google Play too, so the same link works. Or sideload
-  with *Send files to TV*, a USB drive, or `adb install OwnTV.apk`.
+  with *Send files to TV*, a USB drive, or `adb install MyIPTV.apk`.
 
-> Install only from this repository's Releases. Each release ships `OwnTV.apk` (arm — every real TV
-> box) and the same build with its version in the name, `OwnTV-vX.X.X.apk`. The file is still called
-> `OwnTV.apk` for now. Builds signed with a release key also add `OwnTV-x86_64-vX.X.X.apk`
-> (emulators and rare Intel boxes). Until a release key is set up, builds are debug-signed: to update,
+> Install only from this repository's Releases. Each release ships `MyIPTV.apk` (arm — every real TV
+> box) and the same build with its version in the name, `MyIPTV-vX.X.X.apk`. Builds signed with a
+> release key also add `MyIPTV-x86_64-vX.X.X.apk` (emulators and rare Intel boxes). Releases up to
+> v1.0.1 name the file `OwnTV.apk`. Until a release key is set up, builds are debug-signed: to update,
 > uninstall the previous version first.
 >
 > The Downloader code in the original OwnTV README (`4308278`) installs the **original** app, not this one.

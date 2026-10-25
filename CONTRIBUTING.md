@@ -1,11 +1,11 @@
-# Contributing to OwnTV
+# Contributing to MyIPTV
 
-Thanks for your interest in improving OwnTV! Contributions of all sizes are welcome — bug fixes,
+Thanks for your interest in improving MyIPTV! Contributions of all sizes are welcome — bug fixes,
 features, docs, or ideas.
 
 ## Ground rules
 
-- OwnTV is a **player only**. Please keep its bring-your-own-source positioning — no bundled channels,
+- MyIPTV is a **player only**. Please keep its bring-your-own-source positioning — no bundled channels,
   playlists, or content, and nothing that facilitates access to unauthorized streams.
 - It targets **Android TV** (D-pad / leanback first). Keep navigation remote-friendly.
 - Match the existing code style and structure (Kotlin, Jetpack Compose for TV, Koin, Room).
