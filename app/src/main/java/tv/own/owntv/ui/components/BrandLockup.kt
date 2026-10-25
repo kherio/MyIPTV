@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -19,9 +21,17 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.compose.koinInject
 import tv.own.owntv.R
@@ -101,14 +111,27 @@ private val PixelSide = Color(CorePixelMark.SIDE)
 private val PixelPower = Color(CorePixelMark.POWER)
 
 /**
- * The wordmark: lowercase "own" in cream, "tv" in [tv] (the accent), drawn from
- * core's two vectors at [width]; its height follows the 988 × 182 drawing.
+ * The wordmark: the app name drawn as text at [width], its first two letters ("My") in [own] (cream on
+ * dark surfaces) and the rest ("IPTV") in [tv] (the accent), like the two-tone wordmark it replaces.
+ * The box keeps the old 988 × 182 proportions so every caller lays out as before.
  */
 @Composable
 fun Wordmark(width: Dp, modifier: Modifier = Modifier, tv: Color = stageAccent.accent, own: Color = WordmarkCream) {
+    val name = stringResource(R.string.app_name)
+    val split = minOf(2, name.length)
+    val size = with(LocalDensity.current) { (width * 0.25f).toSp() }
     Box(modifier.width(width).height(width * 182f / 988f)) {
-        Image(painterResource(R.drawable.owntv_wordmark_own), null, Modifier.fillMaxSize(), colorFilter = ColorFilter.tint(own))
-        Image(painterResource(R.drawable.owntv_wordmark_tv), null, Modifier.fillMaxSize(), colorFilter = ColorFilter.tint(tv))
+        BasicText(
+            text = buildAnnotatedString {
+                withStyle(SpanStyle(color = own)) { append(name.substring(0, split)) }
+                withStyle(SpanStyle(color = tv)) { append(name.substring(split)) }
+            },
+            style = TextStyle(fontSize = size, fontWeight = FontWeight.ExtraBold, letterSpacing = (-0.02f).em),
+            maxLines = 1,
+            softWrap = false,
+            // The text is taller than the box (the box is the height of the capitals); measure it freely.
+            modifier = Modifier.wrapContentSize(Alignment.CenterStart, unbounded = true),
+        )
     }
 }
 

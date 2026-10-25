@@ -7,6 +7,15 @@
 > Issue numbers that are part of a title are fine; explanatory parentheticals are not. The detail —
 > what, why, files and verification — belongs in the commit message, never here.
 
+## v1.0.2 — 2026-10-25
+
+### ✨ New features
+- **🎨 Rebrand: app name, texts in all 26 languages, logo, TV banner and splash name now say MyIPTV**
+- **📦 Release APKs are named MyIPTV**
+
+### 🐛 Fixes
+- **The About page no longer advertises the original project's Telegram group**
+
 ## v1.0.0 — 2026-10-24
 
 ### ✨ New features
